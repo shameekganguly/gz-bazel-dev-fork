@@ -1,0 +1,26 @@
+name: 'Setup Gazebo Bazel Workspace'
+description: 'Sets up a Gazebo Bazel workspace including vcstool and system dependencies'
+inputs:
+  collection:
+    description: 'The collection file to import from gazebodistro'
+    required: false
+    default: 'collection-rotary.yaml'
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install vcstool
+      shell: bash
+      run: pip install vcstool
+
+    - name: Import Gazebo repos
+      shell: bash
+      run: |
+        curl -O https://raw.githubusercontent.com/gazebo-tooling/gazebodistro/master/${{ inputs.collection }}
+        vcs import < ${{ inputs.collection }}
+
+

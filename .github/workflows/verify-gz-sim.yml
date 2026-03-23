@@ -1,0 +1,30 @@
+name: Verify build of gz-sim
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  verify-build:
+    name: Build gz-sim
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gz-bazel-dev
+        uses: actions/checkout@v4
+        with:
+          path: gz-bazel-dev
+
+      - name: Setup Gazebo Workspace
+        # We use a custom action to set up the rest of the workspace (siblings of gz-bazel-dev)
+        uses: ./gz-bazel-dev/.github/actions/setup-gz-bazel-workspace
+        with:
+          collection: collection-rotary.yaml
+
+      - name: Build gz-sim
+        run: |
+          cd gz-bazel-dev
+          bazel build @gz-sim
+
