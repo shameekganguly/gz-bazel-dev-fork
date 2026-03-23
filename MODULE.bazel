@@ -1,0 +1,81 @@
+module(
+    name = "gz-bazel-dev",
+)
+
+bazel_dep(name = "rules_gazebo", version = "0.0.6")
+bazel_dep(name = "gz-common")
+bazel_dep(name = "gz-fuel-tools")
+bazel_dep(name = "gz-math")
+bazel_dep(name = "gz-msgs")
+bazel_dep(name = "gz-physics")
+bazel_dep(name = "gz-plugin")
+bazel_dep(name = "gz-rendering")
+bazel_dep(name = "gz-sensors")
+bazel_dep(name = "gz-sim")
+bazel_dep(name = "gz-transport")
+bazel_dep(name = "gz-utils")
+bazel_dep(name = "sdformat")
+
+# The local paths assume that Gazebo package repos were installed by following
+# the instructions in the README file. If you installed the Gazebo packages in
+# a different location, update the paths below to point to the correct
+# locations.
+local_path_override(
+    module_name = "gz-common",
+    path = "../gz-common",
+)
+
+local_path_override(
+    module_name = "gz-fuel-tools",
+    path = "../gz-fuel-tools",
+)
+
+local_path_override(
+    module_name = "gz-math",
+    path = "../gz-math",
+)
+
+local_path_override(
+    module_name = "gz-msgs",
+    path = "../gz-msgs",
+)
+
+local_path_override(
+    module_name = "gz-physics",
+    path = "../gz-physics",
+)
+
+local_path_override(
+    module_name = "gz-plugin",
+    path = "../gz-plugin",
+)
+
+local_path_override(
+    module_name = "gz-rendering",
+    path = "../gz-rendering",
+)
+
+local_path_override(
+    module_name = "gz-sensors",
+    path = "../gz-sensors",
+)
+
+local_path_override(
+    module_name = "gz-sim",
+    path = "../gz-sim",
+)
+
+local_path_override(
+    module_name = "gz-transport",
+    path = "../gz-transport",
+)
+
+local_path_override(
+    module_name = "gz-utils",
+    path = "../gz-utils",
+)
+
+local_path_override(
+    module_name = "sdformat",
+    path = "../sdformat",
+)

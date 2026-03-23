@@ -1,0 +1,14 @@
+# OS generated files
+.DS_Store
+*.swp
+*.swo
+
+# clangd index
+.cache
+
+# Python cache
+__pycache__
+*.pyc
+
+# Bazel generated files
+bazel-*
